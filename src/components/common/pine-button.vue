@@ -25,18 +25,20 @@ export default {
 @import "@/assets/styles/variables.scss";
 
 .button {
-  background-color: $primary;
-  border-radius: 10px;
+  padding: 12px 30px;
   color: #ffffff;
-  padding: 10px 35px;
+  font-size: 18px;
+  font-weight: 500;
   border: 1px solid $primary;
+  border-radius: 10px;
+  outline: none;
+  background-color: $primary;
   cursor: pointer;
   transition: 200ms ease-in-out;
-  outline: none;
-}
 
-.button:hover {
-  opacity: 0.8;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .unsolid {
