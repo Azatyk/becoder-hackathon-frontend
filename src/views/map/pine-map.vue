@@ -8,21 +8,29 @@
         :controls="[]"
         map-type="hybrid"
       >
-        <ymap-marker marker-id="1" :coords="markerCoords"></ymap-marker>
+        <ymap-marker
+          marker-id="1"
+          :coords="markerCoords"
+          :icon="iconSetting"
+        ></ymap-marker>
       </yandex-map>
     </div>
   </div>
 </template>
 
 <script>
-// import mockImage from "@/assets/images/mockImage.jpg"
-
 export default {
   data() {
     return {
       mapCoords: [42.890259, 71.341873],
       mapZoom: 16,
       markerCoords: [42.890259, 71.341873],
+      iconSetting: {
+        layout: "default#content", // 'default#imageWithContent' для использования с контентом
+        content: "<h1>Hello, World!</h1><br><h1>Hi</h1>", // содержимое контента
+        contentLayout:
+          '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>', // строковый HTML шаблон для контента
+      },
     };
   },
 };
