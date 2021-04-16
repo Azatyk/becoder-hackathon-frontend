@@ -1,9 +1,17 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+import Intro from "@/views/intro/crepiks-intro";
+
 Vue.use(VueRouter);
 
-const routes = [];
+const routes = [
+  {
+    path: "/",
+    name: "intro",
+    component: Intro,
+  },
+];
 
 const router = new VueRouter({
   mode: "history",
