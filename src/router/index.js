@@ -1,10 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Map from "@/views/map/pine-map.vue";
+import Intro from "@/views/intro/crepiks-intro";
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/",
+    name: "intro",
+    component: Intro,
+  },
   {
     path: "/map",
     name: "map",
