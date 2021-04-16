@@ -13,11 +13,19 @@
       отредактируй и узнай какие объекты расположены с помощью<br />
       Pine. Но для начала нам понадобиться твоя электронная почта:
     </p>
-    <button class="intro-button">Начать</button>
+    <pine-button class="intro-button">Начать</pine-button>
   </div>
 </template>
 
-<script setup></script>
+<script>
+import pineButton from "@/components/common/pine-button";
+
+export default {
+  components: {
+    "pine-button": pineButton,
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/styles/variables.scss";
@@ -54,17 +62,6 @@
 
   &-button {
     margin-top: 40px;
-    background-color: $primary;
-    border-radius: 10px;
-    color: #ffffff;
-    padding: 10px 35px;
-    border: 1px solid $primary;
-    cursor: pointer;
-    transition: 200ms ease-in-out;
-  }
-
-  &-button:hover {
-    opacity: 0.8;
   }
 }
 </style>
