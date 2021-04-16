@@ -1,5 +1,16 @@
 <template>
   <div class="intro">
+    <div
+      class="intro-loading"
+      :class="{
+        'intro-loading-open': isLoadingOpen,
+      }"
+    >
+      <div class="intro-loading-container">
+        <img src="@/assets/images/pine-logo.svg" alt="pine_logo" />
+        <div class="intro-loading-text">Pine</div>
+      </div>
+    </div>
     <div class="intro-image">
       <img
         src="@/assets/images/welcome-image.svg"
@@ -24,6 +35,16 @@ export default {
   components: {
     "pine-button": pineButton,
   },
+  data() {
+    return {
+      isLoadingOpen: true,
+    };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.isLoadingOpen = false;
+    }, 1000);
+  },
 };
 </script>
 
@@ -37,6 +58,42 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+
+  &-loading {
+    width: 100%;
+    position: fixed;
+    bottom: 100vh;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary;
+    z-index: 5;
+    transition: transform 800ms ease-in-out;
+    will-change: transform;
+
+    &-open {
+      -moz-transform: translateY(100vh);
+      -ms-transform: translateY(100vh);
+      -webkit-transform: translateY(100vh);
+      -o-transform: translateY(100vh);
+      transform: translateY(100vh);
+    }
+
+    &-container {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 80px;
+    }
+
+    &-text {
+      margin-left: 30px;
+      font-size: 130px;
+      color: #ffffff;
+    }
+  }
 
   &-image {
     width: 260px;
