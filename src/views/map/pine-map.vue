@@ -1,12 +1,16 @@
 <template>
   <div class="map-page">
+    <pine-map-header
+      :mapMode="mapMode"
+      @change-map-mode="mapMode == 1 ? (mapMode = 2) : (mapMode = 1)"
+    />
     <div class="map-container">
       <yandex-map
         :coords="mapCoords"
         :zoom="mapZoom"
         style="width: 100%; height: 100%"
         :controls="[]"
-        map-type="hybrid"
+        :map-type="mapMode == 1 ? 'hybrid' : 'map'"
         show-all-markers
       >
         <ymap-marker
@@ -31,10 +35,22 @@
 
 <script>
 import mockImage from "@/assets/images/mockImage.jpg";
+import pineMapHeader from "@/components/map/pine-map-header.vue";
 
 export default {
+  components: {
+    "pine-map-header": pineMapHeader,
+  },
+
+  methods: {
+    showConsole() {
+      console.log("smth");
+    },
+  },
+
   data() {
     return {
+      mapMode: 1,
       mapCoords: [42.890259, 71.341873],
       mapZoom: 16,
       markerCoords: [42.890259, 71.341873],
@@ -61,8 +77,7 @@ export default {
   }
 
   &-container {
-    margin: auto;
-    margin-top: 10vh;
+    margin: 0 auto;
     width: 90vw;
     height: 70vh;
     border-radius: 10px;
