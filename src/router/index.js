@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Map from "@/views/map/pine-map.vue";
-import Intro from "@/views/intro/crepiks-intro";
+import Intro from "@/views/intro/pine-intro";
 
 Vue.use(VueRouter);
 

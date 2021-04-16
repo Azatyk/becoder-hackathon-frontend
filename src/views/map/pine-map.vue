@@ -7,10 +7,21 @@
         style="width: 100%; height: 100%"
         :controls="[]"
         map-type="hybrid"
+        show-all-markers
       >
         <ymap-marker
           marker-id="1"
           :coords="markerCoords"
+          :icon="iconSetting"
+        ></ymap-marker>
+        <ymap-marker
+          marker-id="2"
+          :coords="[42.888627, 71.347685]"
+          :icon="iconSetting"
+        ></ymap-marker>
+        <ymap-marker
+          marker-id="3"
+          :coords="[42.891335, 71.355905]"
           :icon="iconSetting"
         ></ymap-marker>
       </yandex-map>
@@ -19,6 +30,8 @@
 </template>
 
 <script>
+import mockImage from "@/assets/images/mockImage.jpg";
+
 export default {
   data() {
     return {
@@ -26,10 +39,12 @@ export default {
       mapZoom: 16,
       markerCoords: [42.890259, 71.341873],
       iconSetting: {
-        layout: "default#content", // 'default#imageWithContent' для использования с контентом
-        content: "<h1>Hello, World!</h1><br><h1>Hi</h1>", // содержимое контента
-        contentLayout:
-          '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>', // строковый HTML шаблон для контента
+        layout: "default#imageWithContent",
+        ImageHref: "",
+        imageSize: [30, 40],
+        imageOffset: [-15, -35],
+        content: `<div style='width: 170px; height: 100px; background-image: url(${mockImage}); background-size: cover; background-position: center center; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);'></div>`, // содержимое контента
+        contentOffset: [-80, -100],
       },
     };
   },
@@ -52,7 +67,7 @@ export default {
     height: 70vh;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
   }
 }
 </style>
