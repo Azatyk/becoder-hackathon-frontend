@@ -22,9 +22,9 @@
         </div>
         <h1 class="intro-title">Добро пожаловать в Pine!</h1>
         <p class="intro-text">
-          Узнай историю мест и времени своих фотографией,<br />
-          отредактируй и узнай какие объекты расположены с помощью<br />
-          Pine. Но для начала нам понадобиться твоя электронная почта:
+          Узнай историю мест и времени своих фотографией, отредактируй и узнай
+          какие объекты расположены с помощью Pine. Но для начала нам
+          понадобиться твоя электронная почта:
         </p>
         <pine-button class="intro-button" @click="welcome = false"
           >Начать</pine-button
@@ -138,10 +138,11 @@ export default {
 
   &-text {
     margin-top: 15px;
-    width: 731px;
+    width: 769px;
     font-size: 25px;
     text-align: center;
     color: $main-dark;
+    line-height: 32px;
     opacity: 0.8;
   }
 
