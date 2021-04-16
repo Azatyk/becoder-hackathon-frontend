@@ -4,6 +4,7 @@
     :class="{
       unsolid: type == 'unsolid',
     }"
+    @click="$emit('click')"
   >
     <slot></slot>
   </button>
