@@ -18,7 +18,9 @@
         >Схематичная карта</span
       >
     </div>
-    <pine-button>Добавить изображение</pine-button>
+    <pine-button @click="$emit('add-image-button-clicked')"
+      >Добавить изображение</pine-button
+    >
   </div>
 </template>
 
@@ -37,10 +39,20 @@ export default {
     "pine-button": pineButton,
   },
 
+  data() {
+    return {
+      isNotificationOpen: false,
+    };
+  },
+
   methods: {
     logout() {
       localStorage.removeItem("userId");
       this.$router.push("/");
+    },
+
+    handleAddImageButton() {
+      this.isNotificationOpen = true;
     },
   },
 };

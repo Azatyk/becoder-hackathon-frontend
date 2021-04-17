@@ -1,5 +1,11 @@
 <template>
   <div>
+    <pine-notification
+      @close-notification="isNotificationOpen = false"
+      :isNotificationOpen="isNotificationOpen"
+      >Используйте тестового пользователя:
+      <b>test@mail.ru</b></pine-notification
+    >
     <transition name="show" appear>
       <div
         class="intro-loading"
@@ -70,16 +76,19 @@
 <script>
 import pineButton from "@/components/common/pine-button";
 import { getUser } from "@/requests/users.js";
+import pineNotification from "@/components/common/pine-notification.vue";
 
 export default {
   components: {
     "pine-button": pineButton,
+    "pine-notification": pineNotification,
   },
   data() {
     return {
       isLoadingOpen: true,
       isFirstPage: true,
       email: "",
+      isNotificationOpen: false,
     };
   },
   mounted() {
@@ -89,6 +98,9 @@ export default {
   },
   methods: {
     handleNextButton() {
+      if (this.email != "test@mail.ru") {
+        this.isNotificationOpen = true;
+      }
       getUser(this.email)
         .then((res) => {
           localStorage.setItem("userId", res.data.user.id);

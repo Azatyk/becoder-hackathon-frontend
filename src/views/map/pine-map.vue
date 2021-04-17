@@ -1,8 +1,14 @@
 <template>
   <div class="map-page">
+    <pine-notification
+      @close-notification="isNotificationOpen = false"
+      :isNotificationOpen="isNotificationOpen"
+      >Функциональность находится в разработке</pine-notification
+    >
     <pine-map-header
       :mapMode="mapMode"
       @change-map-mode="mapMode == 1 ? (mapMode = 2) : (mapMode = 1)"
+      @add-image-button-clicked="isNotificationOpen = true"
     />
     <div class="map-container">
       <transition name="fade">
@@ -44,11 +50,13 @@
 import pineMapHeader from "@/components/map/pine-map-header.vue";
 import pineImageCard from "@/components/map/pine-image-card.vue";
 import { getImages } from "@/requests/images.js";
+import pineNotification from "@/components/common/pine-notification.vue";
 
 export default {
   components: {
     "pine-map-header": pineMapHeader,
     "pine-image-card": pineImageCard,
+    "pine-notification": pineNotification,
   },
 
   data() {
@@ -66,6 +74,7 @@ export default {
       activeMarker: {
         path: "",
       },
+      isNotificationOpen: false,
     };
   },
 
