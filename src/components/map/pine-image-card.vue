@@ -9,7 +9,7 @@
     ></div>
     <div class="card-info">
       <span class="card-label">Дата снимка:</span>
-      <span class="card-data">{{ createdAt }}</span>
+      <span class="card-data">{{ createdAtParsed }}</span>
     </div>
     <div class="card-info">
       <span class="card-label">Город:</span>
@@ -41,6 +41,38 @@ export default {
       type: String,
       required: false,
     },
+  },
+
+  watch: {
+    createdAt() {
+      if (this.createdAt) {
+        const createdAt = new Date(Date.parse(this.createdAt));
+        this.createdAtParsed =
+          String(createdAt.getDate()) +
+          "/" +
+          String(createdAt.getMonth() + 1) +
+          "/" +
+          String(createdAt.getFullYear());
+      }
+    },
+  },
+
+  mounted() {
+    if (this.createdAt) {
+      const createdAt = new Date(Date.parse(this.createdAt));
+      this.createdAtParsed =
+        String(createdAt.getDate()) +
+        "/" +
+        String(createdAt.getMonth() + 1) +
+        "/" +
+        String(createdAt.getFullYear());
+    }
+  },
+
+  data() {
+    return {
+      createdAtParsed: "",
+    };
   },
 };
 </script>
