@@ -17,6 +17,7 @@
         />
       </transition>
       <yandex-map
+        :key="mapMode"
         :coords="markers[0].coords"
         style="width: 100%; height: 100%; z-index: 4"
         :controls="[]"
