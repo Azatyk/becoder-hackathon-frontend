@@ -30,11 +30,7 @@
           :marker-id="marker.id"
           :coords="marker.coords"
           :icon="{
-            layout: 'default#imageWithContent',
-            ImageHref: '',
-            imageSize: [30, 40],
-            imageOffset: [-15, -35],
-            content: `<div style='width: 170px; height: 100px; background-image: url(${marker.imagePath}); background-size: cover; background-position: center center; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);'></div>`,
+            content: `<div style='position: absolute; bottom: 100%; width: 170px; height: 100px; background-image: url(${marker.imagePath}); background-size: cover; background-position: center center; border: 5px solid white; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);'></div>`,
             contentOffset: [-80, -100],
           }"
           @click="setActiveImage(marker.id)"
@@ -59,7 +55,7 @@ export default {
     return {
       markers: markers,
       mapCoords: [],
-      mapMode: 1,
+      mapMode: 2,
       activeMarker: {
         imagePath: "",
       },

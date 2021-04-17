@@ -50,8 +50,7 @@ export default {
 
 .card {
   padding: 30px 25px;
-  width: 350px;
-  height: 55vh;
+  width: 300px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -87,7 +86,7 @@ export default {
   &-image {
     margin-bottom: 25px;
     width: 100%;
-    height: 200px;
+    height: 150px;
     border-radius: 10px;
     background-size: cover;
     background-position: center center;
