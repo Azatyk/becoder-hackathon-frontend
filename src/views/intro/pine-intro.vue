@@ -51,7 +51,7 @@
         </h1>
         <input placeholder="Введи адрес почты" class="intro-input" />
         <pine-button
-          class="intro-button"
+          class="intro-button intro-button-email"
           @click="handleClick"
           v-if="!this.isFirstPage"
           >Далее</pine-button
@@ -214,6 +214,8 @@ export default {
 
 @media (max-width: 450px) {
   .intro {
+    padding: 10% 0;
+
     &-title {
       font-size: 22px;
 
@@ -225,6 +227,49 @@ export default {
     &-text {
       width: 310px;
       font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .intro {
+    &-image {
+      width: 240px;
+    }
+
+    &-title {
+      font-size: 20px;
+
+      &-email {
+        width: 300px;
+      }
+    }
+
+    &-text {
+      margin-top: 5px;
+    }
+
+    &-button {
+      margin-top: 10px;
+      padding: 6px 20px;
+
+      &-email {
+        margin-top: 30px;
+      }
+    }
+
+    &-loading {
+      &-image {
+        width: 80px;
+      }
+
+      &-text {
+        font-size: 70px;
+      }
+    }
+
+    &-input {
+      width: 280px;
     }
   }
 }
