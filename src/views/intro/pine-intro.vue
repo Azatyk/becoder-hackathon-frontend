@@ -1,17 +1,23 @@
 <template>
   <div>
-    <div
-      class="intro-loading"
-      :class="{
-        'intro-loading-open': isLoadingOpen,
-      }"
-    >
-      <div class="intro-loading-container">
-        <img src="@/assets/images/pine-logo.svg" alt="pine_logo" />
-        <div class="intro-loading-text">Pine</div>
+    <transition name="show" appear>
+      <div
+        class="intro-loading"
+        :class="{
+          'intro-loading-open': isLoadingOpen,
+        }"
+      >
+        <div class="intro-loading-container">
+          <img
+            src="@/assets/images/pine-logo.svg"
+            class="intro-loading-image"
+            alt="pine_logo"
+          />
+          <div class="intro-loading-text">Pine</div>
+        </div>
       </div>
-    </div>
-    <transition name="fade">
+    </transition>
+    <transition name="fade" appear mode="out-in">
       <div class="intro" v-show="this.isFirstPage">
         <div class="intro-image">
           <img
@@ -51,7 +57,7 @@
           class="intro-input"
         />
         <pine-button
-          class="intro-button"
+          class="intro-button intro-button-email"
           @click="handleNextButton"
           v-if="!this.isFirstPage"
           >Далее</pine-button
@@ -191,13 +197,101 @@ export default {
     margin-top: 40px;
   }
 }
+
+@media (max-width: 800px) {
+  .intro {
+    &-title {
+      font-size: 25px;
+
+      &-email {
+        width: 400px;
+      }
+    }
+
+    &-text {
+      width: 400px;
+      font-size: 18px;
+    }
+
+    &-loading {
+      &-image {
+        width: 100px;
+      }
+
+      &-text {
+        font-size: 90px;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .intro {
+    padding: 10% 0;
+
+    &-title {
+      font-size: 22px;
+
+      &-email {
+        width: 320px;
+      }
+    }
+
+    &-text {
+      width: 310px;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .intro {
+    &-image {
+      width: 240px;
+    }
+
+    &-title {
+      font-size: 20px;
+
+      &-email {
+        width: 300px;
+      }
+    }
+
+    &-text {
+      margin-top: 5px;
+    }
+
+    &-button {
+      margin-top: 10px;
+      padding: 6px 20px;
+
+      &-email {
+        margin-top: 30px;
+      }
+    }
+
+    &-loading {
+      &-image {
+        width: 80px;
+      }
+
+      &-text {
+        font-size: 70px;
+      }
+    }
+
+    &-input {
+      width: 280px;
+    }
+  }
+}
 </style>
 
 <style lang="scss">
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 3s ease-in-out;
-  will-change: opacity;
 }
 .fade-enter,
 .fade-leave-to {
