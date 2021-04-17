@@ -18,6 +18,16 @@ export default {
       default: "solid",
     },
   },
+  methods: {
+    handleKeyDown(e) {
+      if (e.code === "Enter") {
+        this.$emit("click");
+      }
+    },
+  },
+  created() {
+    window.addEventListener("keydown", this.handleKeyDown);
+  },
 };
 </script>
 
