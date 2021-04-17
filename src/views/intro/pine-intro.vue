@@ -7,7 +7,11 @@
       }"
     >
       <div class="intro-loading-container">
-        <img src="@/assets/images/pine-logo.svg" alt="pine_logo" />
+        <img
+          src="@/assets/images/pine-logo.svg"
+          class="intro-loading-image"
+          alt="pine_logo"
+        />
         <div class="intro-loading-text">Pine</div>
       </div>
     </div>
@@ -178,6 +182,50 @@ export default {
 
   &-button {
     margin-top: 40px;
+  }
+}
+
+@media (max-width: 800px) {
+  .intro {
+    &-title {
+      font-size: 25px;
+
+      &-email {
+        width: 400px;
+      }
+    }
+
+    &-text {
+      width: 400px;
+      font-size: 18px;
+    }
+
+    &-loading {
+      &-image {
+        width: 100px;
+      }
+
+      &-text {
+        font-size: 90px;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .intro {
+    &-title {
+      font-size: 22px;
+
+      &-email {
+        width: 320px;
+      }
+    }
+
+    &-text {
+      width: 310px;
+      font-size: 16px;
+    }
   }
 }
 </style>
