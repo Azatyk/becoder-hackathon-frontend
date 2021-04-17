@@ -8,11 +8,11 @@
       <transition name="fade">
         <pine-image-card
           class="map-card"
-          v-if="activeMarker.imagePath.length > 0"
-          :imagePath="activeMarker.imagePath"
+          v-if="activeMarker.path.length > 0"
+          :imagePath="activeMarker.path"
           :createdAt="activeMarker.createdAt"
           :city="activeMarker.city"
-          :device="activeMarker.device"
+          :device="activeMarker.deviceModel"
           @close-card="removeActiveMarker"
         />
       </transition>
@@ -28,9 +28,9 @@
           v-for="marker in markers"
           :key="marker.id"
           :marker-id="marker.id"
-          :coords="marker.coords"
+          :coords="[marker.lat, marker.lon]"
           :icon="{
-            content: `<div style='position: absolute; bottom: 100%; width: 170px; height: 100px; background-image: url(${marker.imagePath}); background-size: cover; background-position: center center; border: 5px solid white; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);'></div>`,
+            content: `<div style='position: absolute; bottom: 100%; width: 170px; height: 100px; background-image: url(${marker.path}); background-size: cover; background-position: center center; border: 5px solid white; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);'></div>`,
             contentOffset: [-80, -100],
           }"
           @click="setActiveImage(marker.id)"
@@ -42,8 +42,8 @@
 
 <script>
 import pineMapHeader from "@/components/map/pine-map-header.vue";
-import markers from "@/data/markers.js";
 import pineImageCard from "@/components/map/pine-image-card.vue";
+import { getImages } from "@/requests/images.js";
 
 export default {
   components: {
@@ -53,19 +53,30 @@ export default {
 
   data() {
     return {
-      markers: markers,
-      mapCoords: [],
+      markers: [
+        {
+          path: "",
+          id: 0,
+          lat: 0,
+          lon: 0,
+        },
+      ],
+      mapCoords: [0, 0],
       mapMode: 2,
       activeMarker: {
-        imagePath: "",
+        path: "",
       },
     };
   },
 
   mounted() {
     if (this.markers.length > 0) {
-      this.mapCoords = this.markers[0].coords;
+      this.mapCoords = [this.markers[0].lat, this.markers[0].lon];
+    } else {
+      this.mapCoords = [0, 0];
     }
+    const userId = localStorage.getItem("userId");
+    getImages(userId).then((res) => (this.markers = res.data.images));
   },
 
   methods: {
@@ -74,16 +85,16 @@ export default {
         if (marker.id == imageId) {
           this.activeMarker.createdAt = marker.createdAt;
           this.activeMarker.city = marker.city;
-          this.activeMarker.device = marker.device;
-          this.activeMarker.imagePath = marker.imagePath;
-          this.activeMarker.coords = marker.coords;
+          this.activeMarker.device = marker.deviceModel;
+          this.activeMarker.path = marker.path;
+          this.activeMarker.coords = [marker.lat, marker.lon];
         }
       });
       this.mapCoords = this.activeMarker.coords;
     },
     removeActiveMarker() {
       this.activeMarker = {
-        imagePath: "",
+        path: "",
       };
     },
   },

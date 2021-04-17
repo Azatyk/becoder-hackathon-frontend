@@ -45,10 +45,14 @@
         <h1 class="intro-title intro-title-email">
           Для начала нам понадобиться твоя электронная почта
         </h1>
-        <input placeholder="Введи адрес почты" class="intro-input" />
+        <input
+          v-model="email"
+          placeholder="Введи адрес почты"
+          class="intro-input"
+        />
         <pine-button
           class="intro-button"
-          @click="handleClick"
+          @click="handleNextButton"
           v-if="!this.isFirstPage"
           >Далее</pine-button
         >
@@ -59,6 +63,7 @@
 
 <script>
 import pineButton from "@/components/common/pine-button";
+import { getUser } from "@/requests/users.js";
 
 export default {
   components: {
@@ -68,6 +73,7 @@ export default {
     return {
       isLoadingOpen: true,
       isFirstPage: true,
+      email: "",
     };
   },
   mounted() {
@@ -76,8 +82,13 @@ export default {
     }, 1500);
   },
   methods: {
-    handleClick() {
-      this.$router.push("/input");
+    handleNextButton() {
+      getUser(this.email)
+        .then((res) => {
+          localStorage.setItem("userId", res.data.user.id);
+          this.$router.push("/map");
+        })
+        .catch((err) => console.log(err));
     },
   },
 };

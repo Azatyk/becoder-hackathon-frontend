@@ -15,7 +15,7 @@
       <span class="card-label">Город:</span>
       <span class="card-data">{{ city }}</span>
     </div>
-    <div class="card-info">
+    <div class="card-info" v-if="device">
       <span class="card-label">Устройство:</span>
       <span class="card-data">{{ device }}</span>
     </div>
@@ -39,7 +39,7 @@ export default {
     },
     device: {
       type: String,
-      required: true,
+      required: false,
     },
   },
 };
@@ -52,7 +52,6 @@ export default {
   padding: 30px 25px;
   width: 300px;
   width: 350px;
-  height: 55vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
