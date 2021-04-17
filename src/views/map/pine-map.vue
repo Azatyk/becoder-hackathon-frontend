@@ -5,15 +5,17 @@
       @change-map-mode="mapMode == 1 ? (mapMode = 2) : (mapMode = 1)"
     />
     <div class="map-container">
-      <pine-image-card
-        class="map-card"
-        v-if="activeMarker.imagePath.length > 0"
-        :imagePath="activeMarker.imagePath"
-        :createdAt="activeMarker.createdAt"
-        :city="activeMarker.city"
-        :device="activeMarker.device"
-        @close-card="removeActiveMarker"
-      />
+      <transition name="fade">
+        <pine-image-card
+          class="map-card"
+          v-if="activeMarker.imagePath.length > 0"
+          :imagePath="activeMarker.imagePath"
+          :createdAt="activeMarker.createdAt"
+          :city="activeMarker.city"
+          :device="activeMarker.device"
+          @close-card="removeActiveMarker"
+        />
+      </transition>
       <yandex-map
         :coords="markers[0].coords"
         style="width: 100%; height: 100%; z-index: 4"
@@ -108,5 +110,16 @@ export default {
     right: 3vh;
     z-index: 3;
   }
+}
+</style>
+
+<style lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease-in-out !important;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
