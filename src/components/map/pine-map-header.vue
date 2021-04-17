@@ -18,7 +18,7 @@
         >Схематичная карта</span
       >
     </div>
-    <pine-button type="unsolid">Добавить изображение</pine-button>
+    <pine-button>Добавить изображение</pine-button>
   </div>
 </template>
 
@@ -51,12 +51,22 @@ export default {
 
 .map {
   &-header {
-    margin: 50px auto;
+    padding: 20px 40px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
     width: 90vw;
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    border-radius: 10px;
+    background-color: $white;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    z-index: 5;
   }
 
   &-modes {

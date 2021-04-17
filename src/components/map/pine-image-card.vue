@@ -50,7 +50,7 @@ export default {
 
 .card {
   padding: 30px 25px;
-  width: 400px;
+  width: 350px;
   height: 55vh;
   box-sizing: border-box;
   display: flex;
@@ -70,12 +70,13 @@ export default {
     align-items: center;
     border-radius: 50%;
     background-color: $white;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     transition: 200ms ease-in-out;
     cursor: pointer;
 
     &:hover {
-      opacity: 0.8;
+      transform: translateX(-3px) translateY(3px);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
     &-icon {
