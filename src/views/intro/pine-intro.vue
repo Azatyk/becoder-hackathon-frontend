@@ -1,21 +1,23 @@
 <template>
   <div>
-    <div
-      class="intro-loading"
-      :class="{
-        'intro-loading-open': isLoadingOpen,
-      }"
-    >
-      <div class="intro-loading-container">
-        <img
-          src="@/assets/images/pine-logo.svg"
-          class="intro-loading-image"
-          alt="pine_logo"
-        />
-        <div class="intro-loading-text">Pine</div>
+    <transition name="show" appear>
+      <div
+        class="intro-loading"
+        :class="{
+          'intro-loading-open': isLoadingOpen,
+        }"
+      >
+        <div class="intro-loading-container">
+          <img
+            src="@/assets/images/pine-logo.svg"
+            class="intro-loading-image"
+            alt="pine_logo"
+          />
+          <div class="intro-loading-text">Pine</div>
+        </div>
       </div>
-    </div>
-    <transition name="fade">
+    </transition>
+    <transition name="fade" appear mode="out-in">
       <div class="intro" v-show="this.isFirstPage">
         <div class="intro-image">
           <img
@@ -279,7 +281,6 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 3s ease-in-out;
-  will-change: opacity;
 }
 .fade-enter,
 .fade-leave-to {
