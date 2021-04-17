@@ -8,7 +8,7 @@
       class="input-page-input"
     >
       <p class="ant-upload-drag-icon">
-        <a-icon type="inbox" />
+        <i class="bx bx-download input-page-icon"></i>
       </p>
       <p class="ant-upload-text">Нажми или перетащи файлы в область загрузки</p>
       <p class="ant-upload-hint">
@@ -28,10 +28,13 @@
         <img alt="example" style="width: 100%" :src="previewImage" />
       </a-modal>
     </div>
+    <pine-button class="input-page-button">Далее</pine-button>
   </div>
 </template>
 
 <script>
+import pineButton from "@/components/common/pine-button";
+
 function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -41,6 +44,9 @@ function getBase64(file) {
   });
 }
 export default {
+  components: {
+    "pine-button": pineButton,
+  },
   data() {
     return {
       previewVisible: false,
@@ -105,6 +111,20 @@ export default {
           name: "image.png",
           status: "error",
         },
+        {
+          uid: "-2",
+          name: "image.png",
+          status: "done",
+          url:
+            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+        },
+        {
+          uid: "-3",
+          name: "image.png",
+          status: "done",
+          url:
+            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+        },
       ],
     };
   },
@@ -139,9 +159,9 @@ export default {
 
 <style lang="scss" scoped>
 .input-page {
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
-  padding: 100px 0;
+  padding: 80px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -152,9 +172,26 @@ export default {
   }
 
   &-container {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    max-width: 896px;
   }
+
+  &-button {
+    margin-top: 20px;
+  }
+
+  &-icon {
+    color: #ff7f50;
+    font-size: 40px;
+  }
+}
+</style>
+
+<style lang="scss">
+.ant-upload-drag {
+  border: 1px dashed #ff7f50 !important;
 }
 </style>
