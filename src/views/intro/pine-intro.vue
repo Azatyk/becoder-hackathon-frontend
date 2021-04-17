@@ -25,7 +25,10 @@
           Загрузи фотографии из детства, с прошлой работы или школьные
           фотографии и вспомни где и когда они были сделаны с помощью Pine
         </p>
-        <pine-button class="intro-button" @click="isFirstPage = false"
+        <pine-button
+          class="intro-button"
+          @click="isFirstPage = false"
+          v-if="this.isFirstPage"
           >Начать</pine-button
         >
       </div>
@@ -43,7 +46,12 @@
           Для начала нам понадобиться твоя электронная почта
         </h1>
         <input placeholder="Введи адрес почты" class="intro-input" />
-        <pine-button class="intro-button">Далее</pine-button>
+        <pine-button
+          class="intro-button"
+          @click="handleClick"
+          v-if="!this.isFirstPage"
+          >Далее</pine-button
+        >
       </div>
     </transition>
   </div>
@@ -66,6 +74,11 @@ export default {
     setTimeout(() => {
       this.isLoadingOpen = false;
     }, 1500);
+  },
+  methods: {
+    handleClick() {
+      this.$router.push("/input");
+    },
   },
 };
 </script>

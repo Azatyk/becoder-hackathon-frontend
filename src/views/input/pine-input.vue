@@ -10,23 +10,27 @@
       <p class="ant-upload-drag-icon">
         <i class="bx bx-download input-page-icon"></i>
       </p>
-      <p class="ant-upload-text">Нажми или перетащи файлы в область загрузки</p>
-      <p class="ant-upload-hint">
-        Support for a single or bulk upload. Strictly prohibit from uploading
-        company data or other band files
+      <p class="ant-upload-text input-page-upload-text">
+        Выбери одну или несколько картинок и узнай историю
       </p>
     </a-upload-dragger>
     <div class="input-page-container">
-      <a-upload
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-        list-type="picture-card"
-        :file-list="fileList"
-        @preview="handlePreview"
-        @change="handleChan"
-      ></a-upload>
-      <a-modal :visible="previewVisible" :footer="null" @cancel="handleCancel">
-        <img alt="example" style="width: 100%" :src="previewImage" />
-      </a-modal>
+      <div class="clearfix">
+        <a-upload
+          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          list-type="picture-card"
+          :file-list="fileList"
+          @preview="handlePreview"
+          @change="handleChang"
+        ></a-upload>
+        <a-modal
+          :visible="previewVisible"
+          :footer="null"
+          @cancel="handleCancel"
+        >
+          <img alt="example" style="width: 100%" :src="previewImage" />
+        </a-modal>
+      </div>
     </div>
     <pine-button class="input-page-button">Далее</pine-button>
   </div>
@@ -86,59 +90,44 @@ export default {
           status: "error",
         },
         {
-          uid: "-2",
+          uid: "-6",
           name: "image.png",
           status: "done",
           url:
             "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
         },
         {
-          uid: "-3",
+          uid: "-7",
           name: "image.png",
           status: "done",
           url:
             "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
         },
         {
-          uid: "-4",
+          uid: "-8",
           name: "image.png",
           status: "done",
           url:
             "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
         },
         {
-          uid: "-5",
+          uid: "-9",
+          name: "image.png",
+          status: "done",
+          url:
+            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+        },
+        {
+          uid: "-10",
           name: "image.png",
           status: "error",
-        },
-        {
-          uid: "-2",
-          name: "image.png",
-          status: "done",
-          url:
-            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-        },
-        {
-          uid: "-3",
-          name: "image.png",
-          status: "done",
-          url:
-            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
         },
       ],
     };
   },
   methods: {
     handleChange(info) {
-      const status = info.file.status;
-      if (status !== "uploading") {
-        console.log(info.file, info.fileList);
-      }
-      if (status === "done") {
-        this.$message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === "error") {
-        this.$message.error(`${info.file.name} file upload failed.`);
-      }
+      this.fileList = info.fileList;
     },
     handleCancel() {
       this.previewVisible = false;
@@ -150,7 +139,7 @@ export default {
       this.previewImage = file.url || file.preview;
       this.previewVisible = true;
     },
-    handleChan({ fileList }) {
+    handleChang({ fileList }) {
       this.fileList = fileList;
     },
   },
@@ -185,7 +174,15 @@ export default {
 
   &-icon {
     color: #ff7f50;
-    font-size: 40px;
+    font-size: 70px;
+  }
+
+  &-upload-text {
+    font-family: "SF Pro Display", sans-serif !important;
+    font-size: 25px !important;
+    width: 70%;
+    margin-right: auto !important;
+    margin-left: auto !important;
   }
 }
 </style>
@@ -193,5 +190,9 @@ export default {
 <style lang="scss">
 .ant-upload-drag {
   border: 1px dashed #ff7f50 !important;
+}
+
+.ant-upload-list-text {
+  display: none !important;
 }
 </style>
