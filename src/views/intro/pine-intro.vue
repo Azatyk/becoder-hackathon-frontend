@@ -42,7 +42,7 @@
         <h1 class="intro-title intro-title-email">
           Для начала нам понадобиться твоя электронная почта
         </h1>
-        <input placeholder="Введите адрес почты" class="intro-input" />
+        <input placeholder="Введи адрес почты" class="intro-input" />
         <pine-button class="intro-button">Далее</pine-button>
       </div>
     </transition>
@@ -153,6 +153,7 @@ export default {
     padding: 10px 15px;
     border-radius: 10px;
     width: 300px;
+    font-size: 16px;
     outline: none;
     box-sizing: border-box;
     transition: 200ms ease-in-out;
