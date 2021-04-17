@@ -51,6 +51,8 @@ export default {
 .card {
   padding: 30px 25px;
   width: 300px;
+  width: 350px;
+  height: 55vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Map from "@/views/map/pine-map.vue";
 import Intro from "@/views/intro/pine-intro";
+import Input from "@/views/input/pine-input";
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: "/map",
     name: "map",
     component: Map,
+  },
+  {
+    path: "/input",
+    name: "input",
+    component: Input,
   },
 ];
 
