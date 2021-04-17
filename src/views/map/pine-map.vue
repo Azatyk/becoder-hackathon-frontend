@@ -18,7 +18,7 @@
       </transition>
       <yandex-map
         :key="mapMode"
-        :coords="markers[0].coords"
+        :coords="mapCoords"
         style="width: 100%; height: 100%; z-index: 4"
         :controls="[]"
         :map-type="mapMode == 1 ? 'hybrid' : 'map'"
@@ -58,11 +58,18 @@ export default {
   data() {
     return {
       markers: markers,
+      mapCoords: [],
       mapMode: 1,
       activeMarker: {
         imagePath: "",
       },
     };
+  },
+
+  mounted() {
+    if (this.markers.length > 0) {
+      this.mapCoords = this.markers[0].coords;
+    }
   },
 
   methods: {
@@ -73,8 +80,10 @@ export default {
           this.activeMarker.city = marker.city;
           this.activeMarker.device = marker.device;
           this.activeMarker.imagePath = marker.imagePath;
+          this.activeMarker.coords = marker.coords;
         }
       });
+      this.mapCoords = this.activeMarker.coords;
     },
     removeActiveMarker() {
       this.activeMarker = {
