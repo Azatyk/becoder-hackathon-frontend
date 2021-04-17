@@ -101,4 +101,31 @@ export default {
     opacity: 0.7;
   }
 }
+
+@media (max-width: 700px) {
+  .input {
+    &-title {
+      font-size: 22px;
+    }
+
+    &-label {
+      width: 400px;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .input {
+    &-title {
+      font-size: 18px;
+    }
+
+    &-label {
+      width: 90%;
+      height: 200px;
+      margin-bottom: 30px;
+    }
+  }
+}
 </style>
