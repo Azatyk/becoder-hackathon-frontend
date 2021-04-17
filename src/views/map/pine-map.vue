@@ -97,18 +97,17 @@ export default {
   &-container {
     position: relative;
     margin: 0 auto;
-    width: 90vw;
-    height: 70vh;
+    width: 100vw;
+    height: 100vh;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
     z-index: 3;
   }
 
   &-card {
     position: absolute;
-    top: 3vh;
-    right: 3vh;
+    top: 15vh;
+    right: 9vh;
     z-index: 3;
   }
 }
