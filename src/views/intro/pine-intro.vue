@@ -12,7 +12,7 @@
       </div>
     </div>
     <transition name="fade">
-      <div class="intro" v-if="this.isFirstPage">
+      <div class="intro" v-show="this.isFirstPage">
         <div class="intro-image">
           <img
             src="@/assets/images/welcome-image.svg"
@@ -29,7 +29,9 @@
           >Начать</pine-button
         >
       </div>
-      <div class="intro" v-else>
+    </transition>
+    <transition name="show">
+      <div class="intro" v-show="!this.isFirstPage">
         <div class="intro-image">
           <img
             src="@/assets/images/pine-email.svg"
@@ -41,9 +43,7 @@
           Для начала нам понадобиться твоя электронная почта
         </h1>
         <input placeholder="Введите адрес почты" class="intro-input" />
-        <pine-button class="intro-button" @click="welcome = false"
-          >Далее</pine-button
-        >
+        <pine-button class="intro-button">Далее</pine-button>
       </div>
     </transition>
   </div>
@@ -171,10 +171,21 @@ export default {
 <style lang="scss">
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 2s;
+  transition: opacity 3s ease-in-out;
+  will-change: opacity;
 }
 .fade-enter,
 .fade-leave-to {
+  opacity: 0;
+}
+
+.show-enter-active,
+.show-leave-active {
+  transition: opacity 1.5s ease-in-out;
+  will-change: opacity;
+}
+.show-enter,
+.show-leave-to {
   opacity: 0;
 }
 </style>
