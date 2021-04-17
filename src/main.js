@@ -21,6 +21,12 @@ const settings = {
 
 Vue.use(YandexMaps, settings);
 
+import firebase from "firebase";
+
+firebase.initializeApp({
+  storageBucket: "notsoserious-c6690.appspot.com",
+});
+
 new Vue({
   router,
   store,
